@@ -16,53 +16,49 @@ age distribution, and social infrastructure.
 The goal of the project is to make complex regional data easier to understand through visual analysis and comparison.
 
 
-## GIF Seconds Mode Demo & Platine Schemata
+## Visualizing the Relationship Between Unemployment and Crime
 
-<img src="bc_action.gif" alt="GIF binary clock" width="150"> <img src="platine_schema.png" alt="binary clock Schema" width="350">
+<img src="statistics.png" alt="statistic" width="600">
 
 ## Features
-- Binary time display
-- 4 LEDs for displaying the hours
-- 7 LEDs for displaying the minutes
-- Optional seconds display mode
-- Sleep mode
-- Adjustable LED brightness
-- Manual time setting
-- Self-designed clock housing
-- Milled and assembled physical case
-- Hand-soldered electronic components
-- Developed using PlatformIO and Visual Studio Code
-- Program code for controlling the ATmega48 microcontroller
+- Interactive crime statistics visualization for German districts
+- Comparison of crime rates with selected socioeconomic indicators
+- Scatterplot-based analysis of relationships between variables
+- Selectable data categories for customized exploration
+- Trend line for identifying possible statistical patterns
+- Regional overview of differences between districts
 
 
 ## Tech Stack
 
-![C++](https://img.shields.io/badge/C++-00599C?logo=cplusplus&logoColor=white)
-![PlatformIO](https://img.shields.io/badge/PlatformIO-F5822A?logo=platformio&logoColor=white)
-![Visual Studio Code](https://img.shields.io/badge/VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)
-![AVR](https://img.shields.io/badge/AVR-Microcontroller-red)
-![AVR Libc](https://img.shields.io/badge/AVR%20Libc-Library-orange)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![D3.js](https://img.shields.io/badge/D3.js-F9A03C?logo=d3dotjs&logoColor=white)
+![RDF](https://img.shields.io/badge/RDF-Data-blue)
+![SPARQL](https://img.shields.io/badge/SPARQL-Query%20Language-purple)
 
 | Technology / Library | Purpose |
 |----------------------|---------|
-| C++ | Programming the microcontroller logic |
-| PlatformIO | Building, configuring, and uploading the firmware |
-| Visual Studio Code | Development environment |
-| AVR Microcontroller | Hardware platform for controlling the binary clock |
-| `<avr/io.h>` | Accessing AVR input/output registers |
-| `<avr/interrupt.h>` | Handling interrupts |
-| `<util/delay.h>` | Creating time delays |
-| `<stdbool.h>` | Using boolean values |
-| `<stdint.h>` | Using fixed-width integer types |
-
+| HTML | Structure of the static web page |
+| CSS | Styling and responsive layout |
+| Vanilla JavaScript | Application logic and interaction handling |
+| D3.js | Creating interactive data visualizations |
+| d3-regression | Displaying regression and trend lines |
+| Comunica | Running SPARQL queries directly in the browser |
+| N3.js | Parsing and storing RDF/N-Triples data |
+| RDF / N-Triples | Structured data format for districts and indicators |
+| SPARQL | Querying crime and socioeconomic data |
+| Python HTTP Server | Local testing of the static web application |
 
 
 ## Software Bill of Materials
 
-This project does not currently require a separate Software Bill of Materials because it does not use any external third-party libraries or additional package dependencies.
+This project does not currently include a separate Software Bill of Materials because it does not use npm, `node_modules`, a build pipeline, or locally installed package dependencies.
 
-The firmware only relies on standard AVR/C libraries, such as `avr/io.h`, `avr/interrupt.h`, `util/delay.h`, `stdbool.h`, and `stdint.h`, together with the PlatformIO build environment for the ATmega48 microcontroller.
+The application is a static web project based on HTML, CSS, and Vanilla JavaScript. External browser libraries such as D3.js, d3-regression, Comunica, and N3.js are included directly in the HTML file via script tags.
 
+The data is stored locally in an N-Triples file and queried client-side using SPARQL.
 ## Requirements
 
 To build and upload this project, the following tools and hardware are required:
@@ -73,49 +69,21 @@ To build and upload this project, the following tools and hardware are required:
 - USBasp programmer
 - ATmega48 microcontroller
 
-## Check Requirement
+## Requirements
 
-Check if PlatformIO is installed:
+To run this project locally, the following requirements are needed:
 
-```bash
-pio --version
-```
+- A modern web browser
+- Python 3 for starting a local development server
+- An internet connection to load the external browser libraries
+- The local `daten_indikatoren.nt` data file
 
-Check if the project configuration is detected:
+No npm installation, build process, or `node_modules` folder is required because the project runs as a static web application.
 
-```bash
-pio project config
-```
-
-List connected devices and ports:
+Start the local server with:
 
 ```bash
-pio device list
-```
-
-Build / compile the firmware:
-
-```bash
-pio run -e ATmega48
-```
-
-Check the USBasp connection to the ATmega48:
-
-```bash
-avrdude -c usbasp -p m48 -B64
-```
-
-Upload / flash the firmware to the microcontroller:
-
-```bash
-pio run -e ATmega48 -t upload
-```
-
-Open the serial monitor:
-
-```bash
-pio device monitor -p COM8 -b 4800
-```
+python3 -m http.server 8000
 
 
 ### Compile & Upload
