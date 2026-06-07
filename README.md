@@ -7,10 +7,14 @@
 >  Julian Wappler  Juan Rojas
 > 
 ## About the Project
+This project presents an interactive data atlas for comparing crime rates 
+and socioeconomic indicators across German districts. 
+It focuses on exploring possible relationships between 
+regional crime statistics and factors such as unemployment, 
+age distribution, and social infrastructure.
 
-I developed a binary clock as part of a university project. The clock displays the hours using 4 LEDs and the minutes using 7 additional LEDs.
+The goal of the project is to make complex regional data easier to understand through visual analysis and comparison.
 
-Besides writing the software, I also designed the physical clock myself, milled the housing, soldered the electronic components, and assembled the final device. I used PlatformIO with Visual Studio Code for the development and programming of the microcontroller. This repository contains the program code used to control the binary clock.
 
 ## GIF Seconds Mode Demo & Platine Schemata
 
