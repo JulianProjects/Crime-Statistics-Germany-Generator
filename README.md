@@ -82,7 +82,7 @@ No npm installation, build process, or `node_modules` folder is required because
 
 Start the local server with:
 
-```bash
+bash
 python3 -m http.server 8000
 
 
@@ -90,15 +90,13 @@ python3 -m http.server 8000
 
 The source code is translated into a .hex file for the ATmega48:
 
-```powershell
+powershell
 pio run -e ATmega48
-```
 
 The compiled program is transferred to the microcontroller:
 
-```powershell
+powershell
 pio run -e ATmega48 -t upload
-```
 
 
 
