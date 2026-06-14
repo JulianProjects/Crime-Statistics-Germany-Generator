@@ -61,43 +61,73 @@ The application is a static web project based on HTML, CSS, and Vanilla JavaScri
 The data is stored locally in an N-Triples file and queried client-side using SPARQL.
 ## Requirements
 
-To build and upload this project, the following tools and hardware are required:
+To run and develop this project locally, the following components are required:
 
-- Visual Studio Code
-- PlatformIO extension for Visual Studio Code
-- AVR toolchain
-- USBasp programmer
-- ATmega48 microcontroller
-
-## Requirements
-
-To run this project locally, the following requirements are needed:
-
-- A modern web browser
-- Python 3 for starting a local development server
-- An internet connection to load the external browser libraries
+- Node.js (LTS, Version >= 18) & npm
+- Python 3 (as an alternative development server)
+- A modern web browser (Chrome, Firefox, Edge, etc.)
+- The external browser libraries: **Comunica**, **N3**, and **D3**
 - The local `daten_indikatoren.nt` data file
 
-No npm installation, build process, or `node_modules` folder is required because the project runs as a static web application.
+## 1. Environment Installation (Windows)
 
-Start the local server with:
+Before setting up the project, ensure that Node.js is installed on your Windows system.
 
-``` bash
-python3 -m http.server 8000
+### Install via Windows Package Manager (Winget)
+Open PowerShell or Command Prompt as Administrator and run:
+
+Install Node.js
+```powershell
+winget install OpenJS.NodeJS
 ```
 
-### Compile & Upload
+## 2. Project Setup & Verification
 
-#### The source code is translated into a .hex file for the ATmega48:
+Once the environment is ready, verify the installations and install the project dependencies.
 
-``` powershell
-pio run -e ATmega48
+### Check installed versions:
+```powershell
+node -v
+```
+```powershell
+npm -v
 ```
 
-#### The compiled program is transferred to the microcontroller:
-``` powershell
-pio run -e ATmega48 -t upload
+### Install project-specific development dependencies:
+Run this command inside the project root directory (where the `package.json` is located):
+```powershell
+npm install
 ```
 
+## 3. Running the Local Development Server
 
+Since the project uses absolute paths and modern JS modules, it must be run through a local server rather than opening the HTML file directly.
 
+### Using Node.js (Recommended)
+Start the server using `npx`:
+```powershell
+npx serve .
+```
+Access the application in your browser at:
+```powershell
+http://localhost:3000
+```
+
+## 4. Linting & Code Quality
+
+The project enforces the **Google JavaScript Style Guide**. The rules are validated via **ESLint** (configured in `.eslintrc.json`).
+
+### Run the style and syntax check:
+```powershell
+npm run lint
+```
+
+### Manually trigger ESLint for a specific folder:
+```powershell
+npx eslint Website/
+```
+
+### Automatically fix formatting issues and style violations:
+```powershell
+npm run lint:fix
+```
